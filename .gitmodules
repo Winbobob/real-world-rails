@@ -839,3 +839,612 @@
 	path = apps/envizon
 	url = git@github.com:evait-security/envizon.git
 	branch = master
+[submodule "apps/AirCasting"]
+	path = apps/AirCasting
+	url = git@github.com:HabitatMap/AirCasting.git
+[submodule "apps/AsakusaSatellite"]
+	path = apps/AsakusaSatellite
+	url = git@github.com:codefirst/AsakusaSatellite.git
+[submodule "apps/askaway"]
+	path = apps/askaway
+	url = git@github.com:askaway/askaway.git
+[submodule "apps/Beatstream"]
+	path = apps/Beatstream
+	url = git@github.com:Darep/Beatstream.git
+[submodule "apps/calcentral"]
+	path = apps/calcentral
+	url = git@github.com:ets-berkeley-edu/calcentral.git
+[submodule "apps/campo"]
+	path = apps/campo
+	url = git@github.com:chloerei/campo.git
+[submodule "apps/coderwall"]
+	path = apps/coderwall
+	url = git@github.com:assemblymade/coderwall.git
+[submodule "apps/CoRM"]
+	path = apps/CoRM
+	url = git@github.com:SIGIRE/CoRM.git
+[submodule "apps/covoiturage-libre"]
+	path = apps/covoiturage-libre
+	url = git@github.com:covoiturage-libre/covoiturage-libre.git
+[submodule "apps/crabgrass-core"]
+	path = apps/crabgrass-core
+	url = git@github.com:riseuplabs/crabgrass-core.git
+[submodule "apps/crowdai"]
+	path = apps/crowdai
+	url = git@github.com:crowdAI/crowdai.git
+[submodule "apps/CrowdtiltOpen"]
+	path = apps/CrowdtiltOpen
+	url = git@github.com:Crowdtilt/CrowdtiltOpen.git
+[submodule "apps/cyber-dojo"]
+	path = apps/cyber-dojo
+	url = git@github.com:JonJagger/cyber-dojo.git
+[submodule "apps/danbooru"]
+	path = apps/danbooru
+	url = git@github.com:r888888888/danbooru.git
+[submodule "apps/dgi-db"]
+	path = apps/dgi-db
+	url = git@github.com:griffithlab/dgi-db.git
+[submodule "apps/ekylibre"]
+	path = apps/ekylibre
+	url = git@github.com:ekylibre/ekylibre.git
+[submodule "apps/encrypt.to"]
+	path = apps/encrypt.to
+	url = git@github.com:encrypt-to/encrypt.to.git
+[submodule "apps/eol"]
+	path = apps/eol
+	url = git@github.com:EOL/eol.git
+[submodule "apps/expertiza"]
+	path = apps/expertiza
+	url = git@github.com:expertiza/expertiza.git
+[submodule "apps/fairmondo"]
+	path = apps/fairmondo
+	url = git@github.com:fairmondo/fairmondo.git
+[submodule "apps/follow-all"]
+	path = apps/follow-all
+	url = git@github.com:codeforamerica/follow-all.git
+[submodule "apps/fromthepage"]
+	path = apps/fromthepage
+	url = git@github.com:benwbrum/fromthepage.git
+[submodule "apps/graff_mags"]
+	path = apps/graff_mags
+	url = git@github.com:dankleiman/graff_mags.git
+[submodule "apps/hashrobot"]
+	path = apps/hashrobot
+	url = git@github.com:rysmith/hashrobot.git
+[submodule "apps/hitobito"]
+	path = apps/hitobito
+	url = git@github.com:hitobito/hitobito.git
+[submodule "apps/houston-core"]
+	path = apps/houston-core
+	url = git@github.com:houston/houston-core.git
+[submodule "apps/inaturalist"]
+	path = apps/inaturalist
+	url = git@github.com:inaturalist/inaturalist.git
+[submodule "apps/intercity-next"]
+	path = apps/intercity-next
+	url = git@github.com:intercity/intercity-next.git
+[submodule "apps/kanban"]
+	path = apps/kanban
+	url = git@github.com:somlor/kanban.git
+[submodule "apps/lavish"]
+	path = apps/lavish
+	url = git@github.com:mquan/lavish.git
+[submodule "apps/leihs"]
+	path = apps/leihs
+	url = git@github.com:leihs/leihs.git
+[submodule "apps/listenup"]
+	path = apps/listenup
+	url = git@github.com:ooofinooo/listenup.git
+[submodule "apps/mumuki-laboratory"]
+	path = apps/mumuki-laboratory
+	url = git@github.com:mumuki/mumuki-laboratory.git
+[submodule "apps/opencongress"]
+	path = apps/opencongress
+	url = git@github.com:sunlightlabs/opencongress.git
+[submodule "apps/OpenFarm"]
+	path = apps/OpenFarm
+	url = git@github.com:openfarmcc/OpenFarm.git
+[submodule "apps/ossfriday"]
+	path = apps/ossfriday
+	url = git@github.com:ossfriday/ossfriday.git
+[submodule "apps/otwarchive"]
+	path = apps/otwarchive
+	url = git@github.com:otwcode/otwarchive.git
+[submodule "apps/PasswordPusher"]
+	path = apps/PasswordPusher
+	url = git@github.com:pglombardo/PasswordPusher.git
+[submodule "apps/people"]
+	path = apps/people
+	url = git@github.com:netguru/people.git
+[submodule "apps/popHealth"]
+	path = apps/popHealth
+	url = git@github.com:pophealth/popHealth.git
+[submodule "apps/quant"]
+	path = apps/quant
+	url = git@github.com:jdjkelly/quant.git
+[submodule "apps/racing_on_rails"]
+	path = apps/racing_on_rails
+	url = git@github.com:scottwillson/racing_on_rails.git
+[submodule "apps/RapidFTR"]
+	path = apps/RapidFTR
+	url = git@github.com:rapidftr/RapidFTR.git
+[submodule "apps/rentmybikes-rails"]
+	path = apps/rentmybikes-rails
+	url = git@github.com:balanced/rentmybikes-rails.git
+[submodule "apps/rletters"]
+	path = apps/rletters
+	url = git@github.com:rletters/rletters.git
+[submodule "apps/RoRdit"]
+	path = apps/RoRdit
+	url = git@github.com:mertbulan/RoRdit.git
+[submodule "apps/rubygems.org"]
+	path = apps/rubygems.org
+	url = git@github.com:rubygems/rubygems.org.git
+[submodule "apps/sanataro"]
+	path = apps/sanataro
+	url = git@github.com:kaznum/sanataro.git
+[submodule "apps/scholarsphere"]
+	path = apps/scholarsphere
+	url = git@github.com:psu-stewardship/scholarsphere.git
+[submodule "apps/selfstarter"]
+	path = apps/selfstarter
+	url = git@github.com:lockitron/selfstarter.git
+[submodule "apps/socify"]
+	path = apps/socify
+	url = git@github.com:scaffeinate/socify.git
+[submodule "apps/spokenvote"]
+	path = apps/spokenvote
+	url = git@github.com:Spokenvote/spokenvote.git
+[submodule "apps/stackneveroverflow"]
+	path = apps/stackneveroverflow
+	url = git@github.com:liaoziyang/stackneveroverflow.git
+[submodule "apps/teambox"]
+	path = apps/teambox
+	url = git@github.com:teambox/teambox.git
+[submodule "apps/theodinproject"]
+	path = apps/theodinproject
+	url = git@github.com:TheOdinProject/theodinproject.git
+[submodule "apps/trado"]
+	path = apps/trado
+	url = git@github.com:Jellyfishboy/trado.git
+[submodule "apps/WebsiteOne"]
+	path = apps/WebsiteOne
+	url = git@github.com:AgileVentures/WebsiteOne.git
+[submodule "apps/bundler"]
+	path = apps/bundler
+	url = git@github.com:bundler/bundler.git
+[submodule "apps/rspec-core"]
+	path = apps/rspec-core
+	url = git@github.com:rspec/rspec-core.git
+[submodule "apps/diff-lcs"]
+	path = apps/diff-lcs
+	url = git@github.com:halostatue/diff-lcs.git
+[submodule "apps/rspec-expectations"]
+	path = apps/rspec-expectations
+	url = git@github.com:rspec/rspec-expectations.git
+[submodule "apps/rspec-mocks"]
+	path = apps/rspec-mocks
+	url = git@github.com:rspec/rspec-mocks.git
+[submodule "apps/multi_json"]
+	path = apps/multi_json
+	url = git@github.com:intridea/multi_json.git
+[submodule "apps/rspec"]
+	path = apps/rspec
+	url = git@github.com:rspec/rspec.git
+[submodule "apps/rake"]
+	path = apps/rake
+	url = git@github.com:ruby/rake.git
+[submodule "apps/rack"]
+	path = apps/rack
+	url = git@github.com:rack/rack.git
+[submodule "apps/rspec-support"]
+	path = apps/rspec-support
+	url = git@github.com:rspec/rspec-support.git
+[submodule "apps/ruby-mime-types"]
+	path = apps/ruby-mime-types
+	url = git@github.com:mime-types/ruby-mime-types.git
+[submodule "apps/i18n"]
+	path = apps/i18n
+	url = git@github.com:svenfuchs/i18n.git
+[submodule "apps/thor"]
+	path = apps/thor
+	url = git@github.com:erikhuda/thor.git
+[submodule "apps/tzinfo"]
+	path = apps/tzinfo
+	url = git@github.com:tzinfo/tzinfo.git
+[submodule "apps/nokogiri"]
+	path = apps/nokogiri
+	url = git@github.com:sparklemotion/nokogiri.git
+[submodule "apps/builder"]
+	path = apps/builder
+	url = git@github.com:jimweirich/builder.git
+[submodule "apps/minitest"]
+	path = apps/minitest
+	url = git@github.com:seattlerb/minitest.git
+[submodule "apps/thread_safe"]
+	path = apps/thread_safe
+	url = git@github.com:ruby-concurrency/thread_safe.git
+[submodule "apps/sass"]
+	path = apps/sass
+	url = git@github.com:sass/sass.git
+[submodule "apps/erubis"]
+	path = apps/erubis
+	url = git@github.com:kwatch/erubis.git
+[submodule "apps/rack-test"]
+	path = apps/rack-test
+	url = git@github.com:rack-test/rack-test.git
+[submodule "apps/mail"]
+	path = apps/mail
+	url = git@github.com:mikel/mail.git
+[submodule "apps/ffi"]
+	path = apps/ffi
+	url = git@github.com:ffi/ffi.git
+[submodule "apps/addressable"]
+	path = apps/addressable
+	url = git@github.com:sporkmonger/addressable.git
+[submodule "apps/faraday"]
+	path = apps/faraday
+	url = git@github.com:lostisland/faraday.git
+[submodule "apps/uglifier"]
+	path = apps/uglifier
+	url = git@github.com:lautis/uglifier.git
+[submodule "apps/multipart-post"]
+	path = apps/multipart-post
+	url = git@github.com:nicksieger/multipart-post.git
+[submodule "apps/daemons"]
+	path = apps/daemons
+	url = git@github.com:thuehlinger/daemons.git
+[submodule "apps/rest-client"]
+	path = apps/rest-client
+	url = git@github.com:rest-client/rest-client.git
+[submodule "apps/method_source"]
+	path = apps/method_source
+	url = git@github.com:banister/method_source.git
+[submodule "apps/net-ssh"]
+	path = apps/net-ssh
+	url = git@github.com:net-ssh/net-ssh.git
+[submodule "apps/coderay"]
+	path = apps/coderay
+	url = git@github.com:rubychan/coderay.git
+[submodule "apps/aws-sdk-ruby"]
+	path = apps/aws-sdk-ruby
+	url = git@github.com:aws/aws-sdk-ruby.git
+[submodule "apps/pry"]
+	path = apps/pry
+	url = git@github.com:pry/pry.git
+[submodule "apps/loofah"]
+	path = apps/loofah
+	url = git@github.com:flavorjones/loofah.git
+[submodule "apps/mini_portile"]
+	path = apps/mini_portile
+	url = git@github.com:flavorjones/mini_portile.git
+[submodule "apps/globalid"]
+	path = apps/globalid
+	url = git@github.com:rails/globalid.git
+[submodule "apps/hike"]
+	path = apps/hike
+	url = git@github.com:sstephenson/hike.git
+[submodule "apps/eventmachine"]
+	path = apps/eventmachine
+	url = git@github.com:eventmachine/eventmachine.git
+[submodule "apps/slop"]
+	path = apps/slop
+	url = git@github.com:leejarvis/slop.git
+[submodule "apps/rubyzip"]
+	path = apps/rubyzip
+	url = git@github.com:rubyzip/rubyzip.git
+[submodule "apps/redis-rb"]
+	path = apps/redis-rb
+	url = git@github.com:redis/redis-rb.git
+[submodule "apps/concurrent-ruby"]
+	path = apps/concurrent-ruby
+	url = git@github.com:ruby-concurrency/concurrent-ruby.git
+[submodule "apps/netrc"]
+	path = apps/netrc
+	url = git@github.com:heroku/netrc.git
+[submodule "apps/rdoc"]
+	path = apps/rdoc
+	url = git@github.com:ruby/rdoc.git
+[submodule "apps/jbuilder"]
+	path = apps/jbuilder
+	url = git@github.com:rails/jbuilder.git
+[submodule "apps/excon"]
+	path = apps/excon
+	url = git@github.com:excon/excon.git
+[submodule "apps/jmespath.rb"]
+	path = apps/jmespath.rb
+	url = git@github.com:jmespath/jmespath.rb.git
+[submodule "apps/multi_xml"]
+	path = apps/multi_xml
+	url = git@github.com:sferik/multi_xml.git
+[submodule "apps/rb-fsevent"]
+	path = apps/rb-fsevent
+	url = git@github.com:thibaudgg/rb-fsevent.git
+[submodule "apps/hashie"]
+	path = apps/hashie
+	url = git@github.com:intridea/hashie.git
+[submodule "apps/treetop"]
+	path = apps/treetop
+	url = git@github.com:cjheath/treetop.git
+[submodule "apps/ruby-pg"]
+	path = apps/ruby-pg
+	url = git@github.com:ged/ruby-pg.git
+[submodule "apps/ruby-unf"]
+	path = apps/ruby-unf
+	url = git@github.com:knu/ruby-unf.git
+[submodule "apps/rb-inotify"]
+	path = apps/rb-inotify
+	url = git@github.com:guard/rb-inotify.git
+[submodule "apps/highline"]
+	path = apps/highline
+	url = git@github.com:JEG2/highline.git
+[submodule "apps/ruby-domain_name"]
+	path = apps/ruby-domain_name
+	url = git@github.com:knu/ruby-domain_name.git
+[submodule "apps/net-scp"]
+	path = apps/net-scp
+	url = git@github.com:net-ssh/net-scp.git
+[submodule "apps/awesome_print"]
+	path = apps/awesome_print
+	url = git@github.com:awesome-print/awesome_print.git
+[submodule "apps/sqlite3-ruby"]
+	path = apps/sqlite3-ruby
+	url = git@github.com:sparklemotion/sqlite3-ruby.git
+[submodule "apps/http-cookie"]
+	path = apps/http-cookie
+	url = git@github.com:sparklemotion/http-cookie.git
+[submodule "apps/mysql2"]
+	path = apps/mysql2
+	url = git@github.com:brianmario/mysql2.git
+[submodule "apps/httparty"]
+	path = apps/httparty
+	url = git@github.com:jnunemaker/httparty.git
+[submodule "apps/sdoc"]
+	path = apps/sdoc
+	url = git@github.com:zzak/sdoc.git
+[submodule "apps/ruby-jwt"]
+	path = apps/ruby-jwt
+	url = git@github.com:jwt/ruby-jwt.git
+[submodule "apps/rspec-rails"]
+	path = apps/rspec-rails
+	url = git@github.com:rspec/rspec-rails.git
+[submodule "apps/thin"]
+	path = apps/thin
+	url = git@github.com:macournoyer/thin.git
+[submodule "apps/formatador"]
+	path = apps/formatador
+	url = git@github.com:geemus/formatador.git
+[submodule "apps/simplecov"]
+	path = apps/simplecov
+	url = git@github.com:colszowka/simplecov.git
+[submodule "apps/simplecov-html"]
+	path = apps/simplecov-html
+	url = git@github.com:colszowka/simplecov-html.git
+[submodule "apps/capybara"]
+	path = apps/capybara
+	url = git@github.com:teamcapybara/capybara.git
+[submodule "apps/faraday_middleware"]
+	path = apps/faraday_middleware
+	url = git@github.com:lostisland/faraday_middleware.git
+[submodule "apps/childprocess"]
+	path = apps/childprocess
+	url = git@github.com:enkessler/childprocess.git
+[submodule "apps/byebug"]
+	path = apps/byebug
+	url = git@github.com:deivid-rodriguez/byebug.git
+[submodule "apps/ruby-progressbar"]
+	path = apps/ruby-progressbar
+	url = git@github.com:jfelchner/ruby-progressbar.git
+[submodule "apps/docile"]
+	path = apps/docile
+	url = git@github.com:ms-ati/docile.git
+[submodule "apps/publicsuffix-ruby"]
+	path = apps/publicsuffix-ruby
+	url = git@github.com:weppos/publicsuffix-ruby.git
+[submodule "apps/rpm"]
+	path = apps/rpm
+	url = git@github.com:newrelic/rpm.git
+[submodule "apps/haml"]
+	path = apps/haml
+	url = git@github.com:haml/haml.git
+[submodule "apps/rainbow"]
+	path = apps/rainbow
+	url = git@github.com:sickill/rainbow.git
+[submodule "apps/xpath"]
+	path = apps/xpath
+	url = git@github.com:teamcapybara/xpath.git
+[submodule "apps/bcrypt-ruby"]
+	path = apps/bcrypt-ruby
+	url = git@github.com:codahale/bcrypt-ruby.git
+[submodule "apps/factory_bot"]
+	path = apps/factory_bot
+	url = git@github.com:thoughtbot/factory_bot.git
+[submodule "apps/warden"]
+	path = apps/warden
+	url = git@github.com:wardencommunity/warden.git
+[submodule "apps/xml-simple"]
+	path = apps/xml-simple
+	url = git@github.com:maik/xml-simple.git
+[submodule "apps/devise"]
+	path = apps/devise
+	url = git@github.com:plataformatec/devise.git
+[submodule "apps/safe_yaml"]
+	path = apps/safe_yaml
+	url = git@github.com:dtao/safe_yaml.git
+[submodule "apps/listen"]
+	path = apps/listen
+	url = git@github.com:guard/listen.git
+[submodule "apps/parser"]
+	path = apps/parser
+	url = git@github.com:whitequark/parser.git
+[submodule "apps/orm_adapter"]
+	path = apps/orm_adapter
+	url = git@github.com:ianwhite/orm_adapter.git
+[submodule "apps/crack"]
+	path = apps/crack
+	url = git@github.com:jnunemaker/crack.git
+[submodule "apps/httpclient"]
+	path = apps/httpclient
+	url = git@github.com:nahi/httpclient.git
+[submodule "apps/chunky_png"]
+	path = apps/chunky_png
+	url = git@github.com:wvanbergen/chunky_png.git
+[submodule "apps/rubocop"]
+	path = apps/rubocop
+	url = git@github.com:bbatsov/rubocop.git
+[submodule "apps/webmock"]
+	path = apps/webmock
+	url = git@github.com:bblimke/webmock.git
+[submodule "apps/database_cleaner"]
+	path = apps/database_cleaner
+	url = git@github.com:DatabaseCleaner/database_cleaner.git
+[submodule "apps/puma"]
+	path = apps/puma
+	url = git@github.com:puma/puma.git
+[submodule "apps/dotenv"]
+	path = apps/dotenv
+	url = git@github.com:bkeepers/dotenv.git
+[submodule "apps/ipaddress"]
+	path = apps/ipaddress
+	url = git@github.com:ipaddress-gem/ipaddress.git
+[submodule "apps/responders"]
+	path = apps/responders
+	url = git@github.com:plataformatec/responders.git
+[submodule "apps/unicode-display_width"]
+	path = apps/unicode-display_width
+	url = git@github.com:janlelis/unicode-display_width.git
+[submodule "apps/websocket-driver-ruby"]
+	path = apps/websocket-driver-ruby
+	url = git@github.com:faye/websocket-driver-ruby.git
+[submodule "apps/connection_pool"]
+	path = apps/connection_pool
+	url = git@github.com:mperham/connection_pool.git
+[submodule "apps/rack-cache"]
+	path = apps/rack-cache
+	url = git@github.com:rtomayko/rack-cache.git
+[submodule "apps/libv8"]
+	path = apps/libv8
+	url = git@github.com:cowboyd/libv8.git
+[submodule "apps/redis-namespace"]
+	path = apps/redis-namespace
+	url = git@github.com:resque/redis-namespace.git
+[submodule "apps/kaminari"]
+	path = apps/kaminari
+	url = git@github.com:kaminari/kaminari.git
+[submodule "apps/uuidtools"]
+	path = apps/uuidtools
+	url = git@github.com:sporkmonger/uuidtools.git
+[submodule "apps/powerpack"]
+	path = apps/powerpack
+	url = git@github.com:bbatsov/powerpack.git
+[submodule "apps/timecop"]
+	path = apps/timecop
+	url = git@github.com:travisjeffery/timecop.git
+[submodule "apps/fog-core"]
+	path = apps/fog-core
+	url = git@github.com:fog/fog-core.git
+[submodule "apps/websocket-extensions-ruby"]
+	path = apps/websocket-extensions-ruby
+	url = git@github.com:faye/websocket-extensions-ruby.git
+[submodule "apps/oauth2"]
+	path = apps/oauth2
+	url = git@github.com:oauth-xx/oauth2.git
+[submodule "apps/parallel"]
+	path = apps/parallel
+	url = git@github.com:grosser/parallel.git
+[submodule "apps/fog"]
+	path = apps/fog
+	url = git@github.com:fog/fog.git
+[submodule "apps/spring"]
+	path = apps/spring
+	url = git@github.com:rails/spring.git
+[submodule "apps/therubyracer"]
+	path = apps/therubyracer
+	url = git@github.com:cowboyd/therubyracer.git
+[submodule "apps/timers"]
+	path = apps/timers
+	url = git@github.com:socketry/timers.git
+[submodule "apps/debug_inspector"]
+	path = apps/debug_inspector
+	url = git@github.com:banister/debug_inspector.git
+[submodule "apps/celluloid"]
+	path = apps/celluloid
+	url = git@github.com:celluloid/celluloid.git
+[submodule "apps/fog-json"]
+	path = apps/fog-json
+	url = git@github.com:fog/fog-json.git
+[submodule "apps/sidekiq"]
+	path = apps/sidekiq
+	url = git@github.com:mperham/sidekiq.git
+[submodule "apps/faker"]
+	path = apps/faker
+	url = git@github.com:stympy/faker.git
+[submodule "apps/systemu"]
+	path = apps/systemu
+	url = git@github.com:ahoward/systemu.git
+[submodule "apps/terminal-table"]
+	path = apps/terminal-table
+	url = git@github.com:tj/terminal-table.git
+[submodule "apps/binding_of_caller"]
+	path = apps/binding_of_caller
+	url = git@github.com:banister/binding_of_caller.git
+[submodule "apps/bootstrap-sass"]
+	path = apps/bootstrap-sass
+	url = git@github.com:twbs/bootstrap-sass.git
+[submodule "apps/htmlentities"]
+	path = apps/htmlentities
+	url = git@github.com:threedaymonk/htmlentities.git
+[submodule "apps/nio4r"]
+	path = apps/nio4r
+	url = git@github.com:socketry/nio4r.git
+[submodule "apps/http_parser.rb"]
+	path = apps/http_parser.rb
+	url = git@github.com:tmm1/http_parser.rb.git
+[submodule "apps/websocket-ruby"]
+	path = apps/websocket-ruby
+	url = git@github.com:imanel/websocket-ruby.git
+[submodule "apps/capistrano"]
+	path = apps/capistrano
+	url = git@github.com:capistrano/capistrano.git
+[submodule "apps/chronic"]
+	path = apps/chronic
+	url = git@github.com:mojombo/chronic.git
+[submodule "apps/ref"]
+	path = apps/ref
+	url = git@github.com:ruby-concurrency/ref.git
+[submodule "apps/request_store"]
+	path = apps/request_store
+	url = git@github.com:steveklabnik/request_store.git
+[submodule "apps/fog-aws"]
+	path = apps/fog-aws
+	url = git@github.com:fog/fog-aws.git
+[submodule "apps/logging"]
+	path = apps/logging
+	url = git@github.com:TwP/logging.git
+[submodule "apps/yajl-ruby"]
+	path = apps/yajl-ruby
+	url = git@github.com:brianmario/yajl-ruby.git
+[submodule "apps/rufus-scheduler"]
+	path = apps/rufus-scheduler
+	url = git@github.com:jmettraux/rufus-scheduler.git
+[submodule "apps/colorize"]
+	path = apps/colorize
+	url = git@github.com:fazibear/colorize.git
+[submodule "apps/fog-xml"]
+	path = apps/fog-xml
+	url = git@github.com:fog/fog-xml.git
+[submodule "apps/shoulda-matchers"]
+	path = apps/shoulda-matchers
+	url = git@github.com:thoughtbot/shoulda-matchers.git
+[submodule "apps/trollop"]
+	path = apps/trollop
+	url = git@github.com:ManageIQ/trollop.git
+[submodule "apps/autoprefixer-rails"]
+	path = apps/autoprefixer-rails
+	url = git@github.com:ai/autoprefixer-rails.git
+[submodule "apps/omniauth"]
+	path = apps/omniauth
+	url = git@github.com:omniauth/omniauth.git
+[submodule "apps/equalizer"]
+	path = apps/equalizer
+	url = git@github.com:dkubb/equalizer.git
