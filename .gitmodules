@@ -1448,3 +1448,69 @@
 [submodule "apps/equalizer"]
 	path = apps/equalizer
 	url = git@github.com:dkubb/equalizer.git
+[submodule "apps/parallel_tests"]
+	path = apps/parallel_tests
+	url = git@github.com:grosser/parallel_tests.git
+[submodule "apps/serverspec"]
+	path = apps/serverspec
+	url = git@github.com:mizzy/serverspec.git
+[submodule "apps/spork"]
+	path = apps/spork
+	url = git@github.com:sporkrb/spork.git
+[submodule "apps/guard"]
+	path = apps/guard
+	url = git@github.com:guard/guard-rspec.git
+[submodule "apps/email-spec"]
+	path = apps/email-spec
+	url = git@github.com:email-spec/email-spec.git
+[submodule "apps/rspec_api_documentation"]
+	path = apps/rspec_api_documentation
+	url = git@github.com:zipmark/rspec_api_documentation.git
+[submodule "apps/airborne"]
+	path = apps/airborne
+	url = git@github.com:brooklynDev/airborne.git
+[submodule "apps/transpec"]
+	path = apps/transpec
+	url = git@github.com:yujinakayama/transpec.git
+[submodule "apps/fabrication"]
+	path = apps/fabrication
+	url = git@github.com:paulelliott/fabrication.git
+[submodule "apps/turnip"]
+	path = apps/turnip
+	url = git@github.com:jnicklas/turnip.git
+[submodule "apps/json_spec"]
+	path = apps/json_spec
+	url = git@github.com:collectiveidea/json_spec.git
+[submodule "apps/aruba"]
+	path = apps/aruba
+	url = git@github.com:cucumber/aruba.git
+[submodule "apps/steak"]
+	path = apps/steak
+	url = git@github.com:cavalle/steak.git
+[submodule "apps/fuubar"]
+	path = apps/fuubar
+	url = git@github.com:thekompanee/fuubar.git
+[submodule "apps/rspec-given"]
+	path = apps/rspec-given
+	url = git@github.com:jimweirich/rspec-given.git
+[submodule "apps/awspec"]
+	path = apps/awspec
+	url = git@github.com:k1LoW/awspec.git
+[submodule "apps/mongoid-rspec"]
+	path = apps/mongoid-rspec
+	url = git@github.com:mongoid/mongoid-rspec.git
+[submodule "apps/rspec-puppet"]
+	path = apps/rspec-puppet
+	url = git@github.com:rodjek/rspec-puppet.git
+[submodule "apps/rspec-sidekiq"]
+	path = apps/rspec-sidekiq
+	url = git@github.com:philostler/rspec-sidekiq.git
+[submodule "apps/rubocop-rspec"]
+	path = apps/rubocop-rspec
+	url = git@github.com:rubocop-rspec/rubocop-rspec.git
+[submodule "apps/nyan-cat-formatter"]
+	path = apps/nyan-cat-formatter
+	url = git@github.com:mattsears/nyan-cat-formatter.git
+[submodule "apps/chefspec"]
+	path = apps/chefspec
+	url = git@github.com:chefspec/chefspec.git
