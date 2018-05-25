@@ -17,7 +17,8 @@ module RealWorldRails
         puts MARKDOWN_CODE_FENCE
       else
         puts formatted_filename(filename)
-        puts CodeRay::Duo[LANGUAGE, source_output_format].highlight(source)
+        # puts CodeRay::Duo[LANGUAGE, source_output_format].highlight(source)
+        puts source
       end
     end
 
