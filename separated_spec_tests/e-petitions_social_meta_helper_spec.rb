@@ -1,0 +1,94 @@
+require 'rails_helper'
+
+RSpec.describe SocialMetaHelper, type: :helper do
+  let(:headers) { helper.request.env }
+
+  describe "#open_graph_tag" do
+    context "when using a string for content" do
+      subject do
+        helper.open_graph_tag("type", "article")
+      end
+
+      it "generates a meta tag with the content" 
+
+    end
+
+    context "when using a symbol for content" do
+      subject do
+        helper.open_graph_tag("site_name", :site_name)
+      end
+
+      it "generates a meta tag with the i18n content" 
+
+    end
+
+    context "when using a symbol for content with interpolation" do
+      subject do
+        helper.open_graph_tag("title", :title, petition: "Show us the money")
+      end
+
+      it "generates a meta tag with the i18n content" 
+
+    end
+
+    context "when using a image path for content" do
+      before do
+        headers["HTTP_HOST"]   = "petition.parliament.uk"
+        headers["HTTPS"]       = "on"
+        headers["SERVER_PORT"] = 443
+      end
+
+      subject do
+        helper.open_graph_tag("image", "os-social/opengraph-image.png")
+      end
+
+      it "generates a meta tag with the correct asset image url" 
+
+    end
+  end
+
+  describe "#twitter_card_tag" do
+    context "when using a string for content" do
+      subject do
+        helper.twitter_card_tag("site", "@hocpetitions")
+      end
+
+      it "generates a meta tag with the content" 
+
+    end
+
+    context "when using a symbol for content" do
+      subject do
+        helper.twitter_card_tag("title", :default_title)
+      end
+
+      it "generates a meta tag with the i18n content" 
+
+    end
+
+    context "when using a symbol for content with interpolation" do
+      subject do
+        helper.twitter_card_tag("title", :title, petition: "Show us the money")
+      end
+
+      it "generates a meta tag with the i18n content" 
+
+    end
+
+    context "when using a image path for content" do
+      before do
+        headers["HTTP_HOST"]   = "petition.parliament.uk"
+        headers["HTTPS"]       = "on"
+        headers["SERVER_PORT"] = 443
+      end
+
+      subject do
+        helper.twitter_card_tag("image", "os-social/opengraph-image.png")
+      end
+
+      it "generates a meta tag with the correct asset image url" 
+
+    end
+  end
+end
+

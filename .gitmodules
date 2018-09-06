@@ -434,10 +434,6 @@
 	path = apps/imminence
 	url = git@github.com:alphagov/imminence.git
 	branch = master
-[submodule "apps/projectjellyfish-api"]
-	path = apps/projectjellyfish-api
-	url = git@github.com:projectjellyfish/api.git
-	branch = master
 [submodule "apps/foodsoft"]
 	path = apps/foodsoft
 	url = git@github.com:foodcoops/foodsoft.git
@@ -534,7 +530,7 @@
 [submodule "apps/rubytogether.org"]
 	path = apps/rubytogether.org
 	url = git@github.com:rubytogether/rubytogether.org.git
-	branch = master
+	branch = main
 [submodule "engines/exception_notification"]
 	path = engines/exception_notification
 	url = git@github.com:smartinez87/exception_notification.git
@@ -1514,3 +1510,11 @@
 [submodule "apps/chefspec"]
 	path = apps/chefspec
 	url = git@github.com:chefspec/chefspec.git
+[submodule "apps/snibox"]
+	path = apps/snibox
+	url = git@github.com:snibox/snibox.git
+	branch = master
+[submodule "apps/dev.to"]
+	path = apps/dev.to
+	url = git@github.com:thepracticaldev/dev.to.git
+	branch = master

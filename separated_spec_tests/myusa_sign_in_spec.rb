@@ -1,0 +1,251 @@
+require 'feature_helper'
+
+describe 'Sign In' do
+  let(:sign_in_page) { SignInPage.new }
+  let(:target_page) { TargetPage.new }
+  let(:sign_in_page) { SignInPage.new }
+  let(:token_instructions_page) { TokenInstructionsPage.new }
+  let(:profile_page) { ProfilePage.new }
+  let(:home_page) { HomePage.new }
+  let(:mobile_confirmation_page) { MobileConfirmationPage.new }
+  let(:sms_page) { TwoFactor::SmsPage.new}
+  let(:welcome_page) { WelcomePage.new }
+
+  let(:email_link_text) { 'click here' }
+
+  describe 'page' do
+    before do
+      sign_in_page.load
+    end
+
+    it 'has an app slogan' 
+
+
+    describe '"More Options" button,', js: true do
+      describe 'at load time,' do
+        specify { expect(sign_in_page).to have_more_options }
+        specify { expect(sign_in_page).to_not have_less_options }
+      end
+
+      describe 'when clicked once,' do
+        before do
+          sign_in_page.more_options_link.click
+          sign_in_page.wait_for_less_options
+        end
+
+        specify { expect(sign_in_page).to_not have_more_options }
+        specify { expect(sign_in_page).to have_less_options }
+      end
+    end
+
+    it 'signed-out user should be redirected to sign-in page' 
+
+  end
+
+  describe 'authentication', sms: true do
+    let(:email) { 'testy@example.gov' }
+    let(:instructions) { "CYM, #{email}" }
+    let(:remember_me) { false  }
+    let(:omniauth_provider) { :google_oauth2 }
+    let(:omniauth_uid) { 12345 }
+
+    let(:omniauth_hash) do
+      OmniAuth::AuthHash.new(
+        provider: omniauth_provider,
+        uid: omniauth_uid,
+        info: {
+          email: email
+        }
+      )
+    end
+
+    before :each do
+      clear_emails
+
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[omniauth_provider] = omniauth_hash
+    end
+
+    # make sure a user with this email exists
+    before :each, create_user: true do
+      FactoryGirl.create(:user, email: email)
+    end
+
+    # trick our authentication libraries into failing
+    before :each, authentication_failure: true do
+      allow(AuthenticationToken).to receive(:authenticate) { false }
+      OmniAuth.config.mock_auth[omniauth_provider] = :invalid_credentials
+    end
+
+    shared_examples 'sign in' do
+      before :each do
+        perform_login!
+      end
+
+      it 'allows user to navigate directly to protected pages' 
+
+    end
+
+    shared_examples 'sign in and redirect' do
+      include_examples 'sign in'
+      it 'allows user to authenticate and redirects' 
+
+    end
+
+    shared_examples 'sending token' do
+      before :each do
+        submit_form
+      end
+
+      it 'lets user know about the token email' 
+
+
+      it 'sends the user an email with sign in link' 
+
+
+      it 'sends an HTTPS link' 
+
+
+      describe 'resending token via email' do
+        before :each do
+          token_instructions_page.resend_link.click
+          open_email(email)
+        end
+
+        it 'allows the user to resend token via email' 
+
+
+        it 'sends the user an email' 
+
+      end
+    end
+
+    shared_examples 'remember me' do
+      # CP: This is a crude hack. I couldn't find another way to ensure
+      # the cookie was present. Ideally, Capybara would let me selectively
+      # expire the session cookie to test that remember token authenticates
+      # the new session automagically, but that didn't work at all. I did
+      # not try to use Timecop to expire tokens because it has been shown
+      # to break Capybara timeouts.
+      def cookies
+        Capybara.current_session.driver.request.cookies
+      end
+
+      before :each do
+        perform_login!
+      end
+
+      context 'without remember me set' do
+        it 'does not set remember cookie' 
+
+      end
+
+      context 'with remember me set' do
+        let(:remember_me) { true }
+
+        it 'sets remember cookie' 
+
+      end
+    end
+
+    shared_examples 'mobile recovery' do
+      before :each do
+        perform_login!
+      end
+
+      let(:phone_number) { '415-555-3455' }
+
+      it 'redirects user to mobile confirmation page' 
+
+
+      it 'user can complete SMS/2FA flow and be redirected back' 
+
+    end
+
+    shared_context 'with email' do
+      def perform_login!
+        submit_form
+        open_email(email)
+        current_email.click_link(email_link_text)
+      end
+
+      def submit_form
+        form.email.set email
+        form.remember_me.set remember_me
+        form.submit.click
+      end
+    end
+
+    shared_context 'with google' do
+      def perform_login!
+        form.google_button.click
+      end
+    end
+
+    shared_examples 'authentication flows' do
+      context 'for the first time' do
+        context 'with email' do
+          include_context 'with email'
+          it_behaves_like 'sign in'
+          it_behaves_like 'sending token'
+          it_behaves_like 'remember me'
+          it_behaves_like 'mobile recovery'
+        end
+
+        context 'with google' do
+          include_context 'with google'
+          it_behaves_like 'sign in'
+          it_behaves_like 'mobile recovery'
+        end
+      end
+
+      context 'with existing user', create_user: true do
+        context 'with email' do
+          include_context 'with email'
+          it_behaves_like 'sign in and redirect'
+          it_behaves_like 'sending token'
+          it_behaves_like 'remember me'
+        end
+
+        context 'with google' do
+          include_context 'with google'
+          it_behaves_like 'sign in and redirect'
+        end
+      end
+    end
+
+    context 'from sign in page' do
+      let(:redirect_page) { profile_page }
+      let(:form) { sign_in_page }
+
+      before :each do
+        sign_in_page.load
+      end
+
+      include_examples 'authentication flows'
+    end
+
+    context 'after redirect to sign in page' do
+      let(:redirect_page) { target_page }
+      let(:form) { sign_in_page }
+
+      before :each do
+        target_page.load
+      end
+
+      include_examples 'authentication flows'
+    end
+
+    context 'signing in from home page' do
+      let(:redirect_page) { profile_page }
+      let(:form) { home_page.login_form }
+
+      before :each do
+        home_page.load
+      end
+
+      include_examples 'authentication flows'
+    end
+  end
+end
+

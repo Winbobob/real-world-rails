@@ -1,0 +1,202 @@
+require "helper"
+
+class BoringVendorProvidedCLI < Thor
+  desc "boring", "do boring stuff"
+  def boring
+    puts "bored. <yawn>"
+  end
+end
+
+class ExcitingPluginCLI < Thor
+  desc "hooray", "say hooray!"
+  def hooray
+    puts "hooray!"
+  end
+
+  desc "fireworks", "exciting fireworks!"
+  def fireworks
+    puts "kaboom!"
+  end
+end
+
+class SuperSecretPlugin < Thor
+  default_command :squirrel
+
+  desc "squirrel", "All of secret squirrel's secrets"
+  def squirrel
+    puts "I love nuts"
+  end
+end
+
+class GroupPlugin < Thor::Group
+  desc "part one"
+  def part_one
+    puts "part one"
+  end
+
+  desc "part two"
+  def part_two
+    puts "part two"
+  end
+end
+
+class ClassOptionGroupPlugin < Thor::Group
+  class_option :who,
+               :type => :string,
+               :aliases => "-w",
+               :default => "zebra"
+end
+
+class CompatibleWith19Plugin < ClassOptionGroupPlugin
+  desc "animal"
+  def animal
+    p options[:who]
+  end
+end
+
+class PluginWithDefault < Thor
+  desc "say MSG", "print MSG"
+  def say(msg)
+    puts msg
+  end
+
+  default_command :say
+end
+
+class PluginWithDefaultMultipleArguments < Thor
+  desc "say MSG [MSG]", "print multiple messages"
+  def say(*args)
+    puts args
+  end
+
+  default_command :say
+end
+
+class PluginWithDefaultcommandAndDeclaredArgument < Thor
+  desc "say MSG [MSG]", "print multiple messages"
+  argument :msg
+  def say
+    puts msg
+  end
+
+  default_command :say
+end
+
+class SubcommandWithDefault < Thor
+  default_command :default
+
+  desc "default", "default subcommand"
+  def default
+    puts "default"
+  end
+
+  desc "with_args", "subcommand with arguments"
+  def with_args(*args)
+    puts "received arguments: " + args.join(",")
+  end
+end
+
+BoringVendorProvidedCLI.register(
+  ExcitingPluginCLI,
+  "exciting",
+  "do exciting things",
+  "Various non-boring actions"
+)
+
+BoringVendorProvidedCLI.register(
+  SuperSecretPlugin,
+  "secret",
+  "secret stuff",
+  "Nothing to see here. Move along.",
+  :hide => true
+)
+
+BoringVendorProvidedCLI.register(
+  GroupPlugin,
+  "groupwork",
+  "Do a bunch of things in a row",
+  "purple monkey dishwasher"
+)
+
+BoringVendorProvidedCLI.register(
+  CompatibleWith19Plugin,
+  "zoo",
+  "zoo [-w animal]",
+  "Shows a provided animal or just zebra"
+)
+
+BoringVendorProvidedCLI.register(
+  PluginWithDefault,
+  "say",
+  "say message",
+  "subcommands ftw"
+)
+
+BoringVendorProvidedCLI.register(
+  PluginWithDefaultMultipleArguments,
+  "say_multiple",
+  "say message",
+  "subcommands ftw"
+)
+
+BoringVendorProvidedCLI.register(
+  PluginWithDefaultcommandAndDeclaredArgument,
+  "say_argument",
+  "say message",
+  "subcommands ftw"
+)
+
+BoringVendorProvidedCLI.register(SubcommandWithDefault,
+  "subcommand", "subcommand", "Run subcommands")
+
+describe ".register-ing a Thor subclass" do
+  it "registers the plugin as a subcommand" 
+
+
+  it "includes the plugin's usage in the help" 
+
+
+  context "with a default command," do
+    it "invokes the default command correctly" 
+
+
+    it "invokes the default command correctly with multiple args" 
+
+
+    it "invokes the default command correctly with a declared argument" 
+
+
+    it "displays the subcommand's help message" 
+
+
+    it "invokes commands with their actual args" 
+
+  end
+
+  context "when $thor_runner is false" do
+    it "includes the plugin's subcommand name in subcommand's help" 
+
+  end
+
+  context "when hidden" do
+    it "omits the hidden plugin's usage from the help" 
+
+
+    it "registers the plugin as a subcommand" 
+
+  end
+end
+
+describe ".register-ing a Thor::Group subclass" do
+  it "registers the group as a single command" 
+
+end
+
+describe "1.8 and 1.9 syntax compatibility" do
+  it "is compatible with both 1.8 and 1.9 syntax w/o command options" 
+
+
+  it "is compatible with both 1.8 and 1.9 syntax w/command options" 
+
+end
+

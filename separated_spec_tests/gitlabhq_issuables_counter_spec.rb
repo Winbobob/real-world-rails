@@ -1,0 +1,39 @@
+require 'spec_helper'
+
+describe 'Navigation bar counter', :use_clean_rails_memory_store_caching do
+  let(:user) { create(:user) }
+  let(:project) { create(:project, namespace: user.namespace) }
+  let(:issue) { create(:issue, project: project) }
+  let(:merge_request) { create(:merge_request, source_project: project) }
+
+  before do
+    issue.assignees = [user]
+    merge_request.update(assignee: user)
+    sign_in(user)
+  end
+
+  it 'reflects dashboard issues count' 
+
+
+  it 'reflects dashboard merge requests count' 
+
+
+  def issues_path
+    issues_dashboard_path(assignee_id: user.id)
+  end
+
+  def merge_requests_path
+    merge_requests_dashboard_path(assignee_id: user.id)
+  end
+
+  def expect_counters(issuable_type, count)
+    dashboard_count = find('.nav-links li.active')
+    nav_count = find(".dashboard-shortcuts-#{issuable_type}")
+    header_count = find(".header-content .#{issuable_type.tr('_', '-')}-count")
+
+    expect(dashboard_count).to have_content(count)
+    expect(nav_count).to have_content(count)
+    expect(header_count).to have_content(count)
+  end
+end
+

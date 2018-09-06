@@ -1,0 +1,37 @@
+# frozen_string_literal: true
+require 'rails_helper'
+
+RSpec.describe SendFile do
+  let(:file) do
+    file = Tempfile.new('test file')
+    file << 'lol'
+    file.close
+    file.path
+  end
+
+  describe '.publish_file' do
+    subject { SendFile.send_file(file) }
+
+    it 'preserves the original file name' 
+
+
+    it 'copies the file' 
+
+
+    context 'when a custom name is given' do
+      let(:file_name) { 'Name with whitespaces' }
+      subject { SendFile.send_file(file, file_name) }
+
+      it 'uses the custom name' 
+
+    end
+  end
+
+  describe '.local_path' do
+    let(:public_path) { SendFile.send_file(file) }
+
+    it 'obtains the local path of the publicly accessible file' 
+
+  end
+end
+

@@ -5,7 +5,7 @@ module RealWorldRails
 
     class ViewSpecsInspector < Inspector
 
-      inspects :specs, %r{/views/}
+      inspects :specs
 
       def inspect_file(filename)
         buffer = create_buffer(filename)

@@ -1,0 +1,116 @@
+require "spec_helper"
+
+describe "NotificationMailer" do
+  let(:recipient)  { FactoryBot.create(:user1, email: "some@user.com") }
+  let(:medication) { FactoryBot.create(:medication, :with_daily_reminder, userid: recipient.id) }
+  let(:medication_reminder)   { medication.take_medication_reminder }
+  let(:strategy) { FactoryBot.create(:strategy, :with_daily_reminder, userid: recipient.id) }
+  let(:strategy_reminder)   { strategy.perform_strategy_reminder }
+
+  describe "#take_medication" do
+    subject(:email) { NotificationMailer.take_medication(medication_reminder) }
+
+    it { expect(email.to).to eq(["some@user.com"]) }
+    it { expect(email.subject).to eq("Don't forget to take Fancy Medication Name!") }
+  end
+
+  describe "#refill_medication" do
+    subject(:email) { NotificationMailer.refill_medication(medication_reminder) }
+
+    it { expect(email.to).to eq(["some@user.com"]) }
+    it { expect(email.subject).to eq("Your refill for Fancy Medication Name is coming up soon!") }
+  end
+
+  describe "#perform_strategy" do
+    subject(:email) { NotificationMailer.perform_strategy(strategy_reminder) }
+
+    it { expect(email.to).to eq(["some@user.com"]) }
+    it { expect(email.subject).to eq("Don't forget to perform Test Strategy!") }
+  end
+
+  describe '#meeting_reminder' do
+    let(:member) { FactoryBot.create(:meeting_member, meeting: meeting).user }
+    let(:meeting) { FactoryBot.create(:meeting) }
+
+    subject(:email) { NotificationMailer.meeting_reminder(meeting, member) }
+
+    it 'sends the email to the correct recipient' 
+
+
+    it 'has the correct subject' 
+
+
+    it 'is addressed to the correct person' 
+
+
+    it 'includes the meeting location' 
+
+
+    it 'includes the meeting time' 
+
+
+    it 'includes the meeting name' 
+
+  end
+
+  describe 'notification' do
+    let(:who_triggered_event) { FactoryBot.create(:user2) }
+
+    let(:data) do
+      JSON.generate(user: who_triggered_event.name,
+                    userid: who_triggered_event.id,
+                    uid: who_triggered_event.uid,
+                    type: type,
+                    uniqueid: 'some_unique_id')
+    end
+
+    context 'when type is accepted_ally_request' do
+      let(:type) { 'accepted_ally_request' }
+
+      subject(:email) { NotificationMailer.notification_email(recipient, data) }
+
+      it { expect(email.subject).to eq("if me | #{who_triggered_event.name} accepted your ally request!") }
+      it { expect(email.body.encoded).to match("<p>Congrats! You can now share Moments, Strategies, and more with #{who_triggered_event.name}.</p>") }
+    end
+
+    context 'when type is new_ally_request' do
+      let(:type) { 'new_ally_request' }
+
+      subject(:email) { NotificationMailer.notification_email(recipient, data) }
+
+      it { expect(email.subject).to eq("if me | #{who_triggered_event.name} sent an ally request!") }
+      it { expect(email.body.encoded).to match("<p>Please <a href=\"http://localhost:3000/allies\">sign in</a> to accept or reject the request!</p>") }
+    end
+
+    describe 'when type is comment on moment' do
+      let(:moment_desc) { 'some_moment_description' }
+      let(:phrase_ally) { "<p>Your ally <strong>#{who_triggered_event.name}" }
+      let(:comment)     { "</strong> commented:</p><p><i>my_comment</i></p>" }
+      let(:link) do
+        "<p>To read it, <a href=\"http://localhost:3000/moments/1\">click here</a>!</p>"
+      end
+
+      let(:data) do
+        JSON.generate({
+          user: who_triggered_event.name,
+          typeid: 1,
+          typename: moment_desc,
+          commentid: 2,
+          comment: 'my_comment',
+          cutoff: false,
+          type: 'comment_on_moment',
+          uniqueid: 'some_unique_id'
+        })
+      end
+
+      subject(:email) { NotificationMailer.notification_email(recipient, data) }
+
+      it { expect(email.subject).to eq("if me | #{who_triggered_event.name} commented on your moment \"#{moment_desc}\"") }
+      it { expect(email.body.encoded).to match(phrase_ally) }
+      it { expect(email.body.encoded).to match(comment) }
+      it { expect(email.body.encoded).to match(link) }
+    end
+  end
+
+end
+

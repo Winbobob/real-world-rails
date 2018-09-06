@@ -1,0 +1,87 @@
+require 'helper'
+describe Pry::ColorPrinter do    
+  include Pry::Helpers::Text
+  let(:io) { StringIO.new }
+  let(:str) { strip_color(io.string.chomp) }
+  
+  describe '.pp' do
+    describe 'Object' do
+      it 'prints a string' 
+
+    end
+
+    describe 'Object subclass' do 
+      before do
+        class ObjectF < Object 
+          def inspect
+            'foo'
+          end
+        end
+
+        class ObjectG < Object
+          def inspect 
+            raise 
+          end
+        end
+      end
+
+      after do 
+        Object.send :remove_const, :ObjectF
+        Object.send :remove_const, :ObjectG
+      end 
+
+      it 'prints a string' 
+
+
+      it 'prints a string, even when an exception is raised' do 
+        Pry::ColorPrinter.pp(ObjectG.new, io)
+        expect(str).to match(/\A#<ObjectG:0x\w+>\z/)
+      end
+    end
+
+    describe 'BasicObject' do
+      it 'prints a string' 
+
+    end
+
+    describe 'BasicObject subclass' do
+      before do
+        class BasicF < BasicObject
+          def inspect
+            'foo'
+          end
+        end
+
+        class BasicG < BasicObject
+          def inspect
+            raise
+          end
+        end
+      end
+
+      after do
+        Object.__send__ :remove_const, :BasicF
+        Object.__send__ :remove_const, :BasicG
+      end
+
+      it 'prints a string' 
+
+
+      it 'prints a string, even when an exception is raised' 
+
+    end
+
+    describe 'String' do
+      context 'with a single-line string' do
+        it 'pretty prints the string' 
+
+      end
+
+      context 'with a multi-line string' do
+        it 'pretty prints the string' 
+
+      end
+    end
+  end
+end
+

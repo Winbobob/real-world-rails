@@ -1,0 +1,169 @@
+require 'rails_helper'
+
+feature 'Request redispatch' do
+  include FormMethods
+
+  context 'when the user is not signed' do
+    describe 'accessing the claim form' do
+      it 'redirects to the start page' 
+
+    end
+
+    describe 'accessing the review page' do
+      it 'redirects to the start page' 
+
+    end
+
+    describe 'accessing the payment page' do
+      it 'redirects to the start page' 
+
+    end
+
+    describe 'accessing the confirmation page' do
+      it 'redirects to the start page' 
+
+    end
+  end
+
+  context 'when the user is signed in' do
+    let(:claim) { Claim.create password: 'lollolol' }
+
+    before do
+      visit new_user_session_path
+      fill_in_return_form claim.reference, 'lollolol'
+    end
+
+    describe 'sending users to the correct pages per the claim state' do
+      describe 'accessing the claim form when the claim state is' do
+        context 'created' do
+          before { claim.update state: 'created' }
+
+          specify 'the request is not redirected' do
+            visit claim_claimant_path
+            expect(page.current_path).to eq claim_claimant_path
+          end
+        end
+
+        context 'payment_required' do
+          before { claim.update state: 'payment_required' }
+
+          it 'redirects to the payment page' 
+
+        end
+
+        context 'enqueued_for_submission' do
+          before { claim.update state: 'enqueued_for_submission' }
+
+          it 'redirects to the confirmation page' 
+
+        end
+
+        context 'submitted' do
+          before { claim.update state: 'submitted' }
+
+          it 'redirects to the confirmation page' 
+
+        end
+      end
+
+      describe 'accessing the review page when the claim state is' do
+        context 'created' do
+          before { claim.update state: 'created' }
+
+          specify 'the request is not redirected' do
+            visit claim_review_path
+            expect(page.current_path).to eq claim_review_path
+          end
+        end
+
+        context 'payment_required' do
+          before { claim.update state: 'payment_required' }
+
+          it 'redirects to the payment page' 
+
+        end
+
+        context 'enqueued_for_submission' do
+          before { claim.update state: 'enqueued_for_submission' }
+
+          it 'redirects to the confirmation page' 
+
+        end
+
+        context 'submitted' do
+          before { claim.update state: 'submitted' }
+
+          it 'redirects to the confirmation page' 
+
+        end
+      end
+
+      describe 'accessing the payment page when the claim state is' do
+        context 'payment_required' do
+          before { claim.update state: 'payment_required' }
+
+          specify 'the request is not redirected' do
+            visit claim_payment_path
+            expect(page.current_path).to eq claim_payment_path
+          end
+        end
+
+        context 'created' do
+          before { claim.update state: 'created' }
+
+          it 'redirects to the claimant page' 
+
+        end
+
+        context 'enqueued_for_submission' do
+          before { claim.update state: 'enqueued_for_submission' }
+
+          it 'redirects to the confirmation page' 
+
+        end
+
+        context 'submitted' do
+          before { claim.update state: 'submitted' }
+
+          it 'redirects to the confirmation page' 
+
+        end
+      end
+
+      describe 'accessing the confirmation page when the claim state is' do
+        context 'submitted' do
+          before { claim.update state: 'submitted' }
+
+          specify 'the request is not redirected' do
+            visit claim_confirmation_path
+            expect(page.current_path).to eq claim_confirmation_path
+          end
+        end
+
+        context 'enqueued_for_submission' do
+          before { claim.update state: 'enqueued_for_submission' }
+
+          specify 'the request is not redirected' do
+            visit claim_confirmation_path
+            expect(page.current_path).to eq claim_confirmation_path
+          end
+        end
+
+        context 'created' do
+          before { claim.update state: 'created' }
+
+          it 'redirects to the claimant page' 
+
+        end
+
+        context 'payment_required' do
+          before { claim.update state: 'payment_required' }
+
+          it 'redirects to the payment page' 
+
+        end
+      end
+    end
+  end
+end
+

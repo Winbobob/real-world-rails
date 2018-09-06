@@ -1,0 +1,64 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+describe "Variants", type: :feature do
+  stub_authorization!
+
+  let(:product) { create(:product_with_option_types, price: "1.99", cost_price: "1.00", weight: "2.5", height: "3.0", width: "1.0", depth: "1.5") }
+
+  context "creating a new variant" do
+    it "should allow an admin to create a new variant" 
+
+  end
+
+  context "listing variants" do
+    context "currency displaying" do
+      context "using Russian Rubles" do
+        before do
+          Spree::Config[:currency] = "RUB"
+        end
+
+        let!(:variant) do
+          create(:variant, product: product, price: 19.99)
+        end
+
+        # Regression test for https://github.com/spree/spree/issues/2737
+        context "uses руб as the currency symbol" do
+          it "on the products listing page" 
+
+        end
+      end
+    end
+  end
+
+  context "editing existent variant" do
+    let!(:variant) { create(:variant, product: product) }
+
+    context "if product has an option type" do
+      let!(:option_type) { create(:option_type) }
+      let!(:option_value) { create(:option_value, option_type: option_type) }
+
+      before do
+        product.option_types << option_type
+        variant.option_values << option_value
+      end
+
+      it "page has a field for editing the option value", js: true do
+        visit spree.edit_admin_product_variant_path(product, variant)
+        expect(page).to have_css("label", text: option_type.presentation)
+        expect(page).to have_select('Size', selected: 'S')
+      end
+    end
+  end
+
+  context "deleting a variant", js: true do
+    let!(:variant) { create(:variant, product: product) }
+    let!(:option_type) { create(:option_type) }
+    let!(:option_value) { create(:option_value, option_type: option_type) }
+
+    it "can delete a variant" 
+
+  end
+end
+

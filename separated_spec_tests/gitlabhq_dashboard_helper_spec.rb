@@ -1,0 +1,19 @@
+require 'spec_helper'
+
+describe DashboardHelper do
+  let(:user) { build(:user) }
+
+  before do
+    allow(helper).to receive(:current_user).and_return(user)
+    allow(helper).to receive(:can?) { true }
+  end
+
+  describe '#dashboard_nav_links' do
+    it 'has all the expected links by default' 
+
+
+    it 'does not contain cross project elements when the user cannot read cross project' 
+
+  end
+end
+

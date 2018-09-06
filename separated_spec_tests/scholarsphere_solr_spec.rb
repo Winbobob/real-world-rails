@@ -1,0 +1,41 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+require 'rake'
+
+describe 'scholarsphere:solr' do
+  before do
+    load_rake_environment ["#{Rails.root}/lib/tasks/scholarsphere/solr.rake"]
+  end
+
+  context 'with incorrect input' do
+    describe 'index' do
+      it 'raises an error' 
+
+    end
+  end
+
+  context 'with a sample file', clean: true do
+    let!(:file) { create(:file) }
+
+    describe 'index' do
+      subject { capture_stdout { Rake::Task['scholarsphere:solr:index'].invoke(file.id) } }
+
+      it { is_expected.to be_empty }
+    end
+
+    describe 'compare', clean: true do
+      subject { capture_stdout { Rake::Task['scholarsphere:solr:compare'].invoke } }
+
+      it { is_expected.to start_with('Things appear to be OK') }
+      context 'when solr and fedora are out of sync' do
+        let!(:count) { ActiveFedora::Base.count }
+
+        before { ActiveFedora::Cleaner.cleanout_solr }
+        it 'raises an error' 
+
+      end
+    end
+  end
+end
+
