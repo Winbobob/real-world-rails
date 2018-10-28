@@ -5,7 +5,7 @@ path = ''
 temp_file = Tempfile.new('foo')
 iterator = 0
 begin
-  File.open('spec_files_without_test_body.txt', 'r') do |file|
+  File.open('../data/spec_files_without_test_body.rb', 'r') do |file|
     file.each_line do |line|
       print '.' if iterator % 100 == 0
       if line =~ /^File:.*\_spec\.rb$/
@@ -15,11 +15,11 @@ begin
           temp_file = Tempfile.new('foo')
         end
         arr = line.split('/');
-        path = "./separated_spec_tests/#{arr[1]}_#{arr[-1][0..-2]}"
+        path = "../separated_spec_tests/#{arr[1]}_#{arr[-1][0..-2]}"
       else
         temp_file.puts line
       end
-      iteratror += 1
+      iterator += 1
     end
   end
 ensure

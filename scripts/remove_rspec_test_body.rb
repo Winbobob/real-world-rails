@@ -1,13 +1,13 @@
 require 'tempfile'
 require 'fileutils'
 
-path = './spec_files_without_test_body.txt'
+path = '../data/spec_files_without_test_body.rb'
 temp_file = Tempfile.new('foo')
 num_of_heading_whitespace_of_specification_line = -1
 curr_num_of_heading_whitespace = -1
 iterator = 0
 begin
-  File.open('spec_files.txt', 'r') do |file|
+  File.open('../data/spec_files.rb', 'r') do |file|
     file.each_line do |line|
       print '.' if iterator % 100 == 0
       if line =~ /^\s+it\s['"].*['"]\sdo$/
@@ -22,6 +22,7 @@ begin
       else
         temp_file.puts line
       end
+      iterator += 1
     end
   end
   temp_file.close
