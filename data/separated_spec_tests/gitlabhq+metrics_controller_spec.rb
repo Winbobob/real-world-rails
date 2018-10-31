@@ -1,0 +1,62 @@
+require 'spec_helper'
+
+describe MetricsController do
+  include StubENV
+
+  let(:json_response) { JSON.parse(response.body) }
+  let(:metrics_multiproc_dir) { Dir.mktmpdir }
+  let(:whitelisted_ip) { '127.0.0.1' }
+  let(:whitelisted_ip_range) { '10.0.0.0/24' }
+  let(:ip_in_whitelisted_range) { '10.0.0.1' }
+  let(:not_whitelisted_ip) { '10.0.1.1' }
+
+  before do
+    stub_env('IN_MEMORY_APPLICATION_SETTINGS', 'false')
+    allow(Prometheus::Client.configuration).to receive(:multiprocess_files_dir).and_return(metrics_multiproc_dir)
+    allow(Gitlab::Metrics).to receive(:prometheus_metrics_enabled?).and_return(true)
+    allow(Settings.monitoring).to receive(:ip_whitelist).and_return([whitelisted_ip, whitelisted_ip_range])
+    allow_any_instance_of(MetricsService).to receive(:metrics_text).and_return("prometheus_counter 1")
+  end
+
+  describe '#index' do
+    shared_examples_for 'endpoint providing metrics' do
+      it 'returns prometheus metrics' 
+
+
+      context 'prometheus metrics are disabled' do
+        before do
+          allow(Gitlab::Metrics).to receive(:prometheus_metrics_enabled?).and_return(false)
+        end
+
+        it 'returns proper response' 
+
+      end
+    end
+
+    context 'accessed from whitelisted ip' do
+      before do
+        allow(Gitlab::RequestContext).to receive(:client_ip).and_return(whitelisted_ip)
+      end
+
+      it_behaves_like 'endpoint providing metrics'
+    end
+
+    context 'accessed from ip in whitelisted range' do
+      before do
+        allow(Gitlab::RequestContext).to receive(:client_ip).and_return(ip_in_whitelisted_range)
+      end
+
+      it_behaves_like 'endpoint providing metrics'
+    end
+
+    context 'accessed from not whitelisted ip' do
+      before do
+        allow(Gitlab::RequestContext).to receive(:client_ip).and_return(not_whitelisted_ip)
+      end
+
+      it 'returns the expected error response' 
+
+    end
+  end
+end
+

@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+require "#{Rails.root}/lib/importers/ores_scores_before_and_after_importer"
+
+describe OresScoresBeforeAndAfterImporter do
+  let(:course) { create(:course) }
+  let(:article) { create(:article) }
+
+  before do
+    stub_wiki_validation
+    course.articles << article
+  end
+
+  it 'runs without error' 
+
+end
+

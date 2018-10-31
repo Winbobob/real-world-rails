@@ -1,0 +1,214 @@
+#-- copyright
+# OpenProject is a project management system.
+# Copyright (C) 2012-2018 the OpenProject Foundation (OPF)
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2017 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See docs/COPYRIGHT.rdoc for more details.
+#++
+
+require 'spec_helper'
+
+describe ::API::V3::WorkPackages::Schema::SpecificWorkPackageSchema do
+  let(:project) { FactoryBot.build_stubbed(:project) }
+  let(:type) { FactoryBot.build_stubbed(:type) }
+  let(:work_package) {
+    FactoryBot.build_stubbed(:work_package,
+                              project: project,
+                              type: type)
+  }
+  let(:current_user) { double('current user') }
+
+  subject { described_class.new(work_package: work_package) }
+
+  it 'has the project set' 
+
+
+  it 'has the type set' 
+
+
+  it 'has an id' 
+
+
+  describe '#milestone?' do
+    it "shows the work_package's value" 
+
+  end
+
+  describe '#assignable_statuses_for' do
+    let(:status_result) { double('status result') }
+
+    before do
+      allow(work_package).to receive(:persisted?).and_return(false)
+      allow(work_package).to receive(:status_id_changed?).and_return(false)
+    end
+
+    it 'calls through to the work package' 
+
+
+    context 'changed work package' do
+      let(:work_package) {
+        double('original work package',
+               id: double,
+               clone: cloned_wp,
+               status: double('wrong status'),
+               persisted?: true).as_null_object
+      }
+      let(:cloned_wp) {
+        double('cloned work package',
+               new_statuses_allowed_to: status_result)
+      }
+      let(:stored_status) {
+        double('good status')
+      }
+
+      before do
+        allow(work_package).to receive(:persisted?).and_return(true)
+        allow(work_package).to receive(:status_id_changed?).and_return(true)
+        allow(Status).to receive(:find_by)
+          .with(id: work_package.status_id_was).and_return(stored_status)
+      end
+
+      it 'calls through to the cloned work package' 
+
+    end
+  end
+
+  describe '#available_custom_fields' do
+    it 'delegates to work_package' 
+
+  end
+
+  describe '#assignable_types' do
+    let(:result) {
+      result = double
+      allow(result).to receive(:includes).and_return(result)
+      result
+    }
+
+    it 'calls through to the project' 
+
+  end
+
+  describe '#assignable_versions' do
+    let(:result) { double }
+
+    it 'calls through to the work package' 
+
+  end
+
+  describe '#assignable_priorities' do
+    let(:active_priority) { FactoryBot.build(:priority, active: true) }
+    let(:inactive_priority) { FactoryBot.build(:priority, active: false) }
+
+    before do
+      active_priority.save!
+      inactive_priority.save!
+    end
+
+    it 'returns only active priorities' 
+
+  end
+
+  describe '#assignable_categories' do
+    let(:category) { double('category') }
+
+    before do
+      allow(project).to receive(:categories).and_return([category])
+    end
+
+    it 'returns all categories of the project' 
+
+  end
+
+  describe '#writable?' do
+    context 'percentage done' do
+      it 'is not writable when inferred by status' 
+
+
+      it 'is not writable when disabled' 
+
+
+      it 'is not writable when the work package is a parent' 
+
+
+      it 'is writable when the work package is a leaf' 
+
+    end
+
+    context 'estimated time' do
+      it 'is not writable when the work package is a parent' 
+
+
+      it 'is writable when the work package is a leaf' 
+
+    end
+
+    context 'start date' do
+      it 'is not writable when the work package is a parent' 
+
+
+      it 'is writable when the work package is a leaf' 
+
+    end
+
+    context 'finish date' do
+      it 'is not writable when the work package is a parent' 
+
+
+      it 'is writable when the work package is a leaf' 
+
+    end
+
+    context 'date' do
+      before do
+        allow(work_package.type).to receive(:is_milestone?).and_return(true)
+      end
+
+      it 'is not writable when the work package is a parent' 
+
+
+      it 'is writable when the work package is a leaf' 
+
+    end
+
+    context 'priority' do
+      it 'is writable when the work package is a parent' 
+
+
+      it 'is writable when the work package is a leaf' 
+
+    end
+  end
+
+  describe '#assignable_custom_field_values' do
+    let(:list_cf) { FactoryBot.create(:list_wp_custom_field) }
+    let(:version_cf) { FactoryBot.build_stubbed(:version_wp_custom_field) }
+
+    it "is a list custom fields' possible values" 
+
+
+    it "is a version custom fields' project values" 
+
+  end
+end
+

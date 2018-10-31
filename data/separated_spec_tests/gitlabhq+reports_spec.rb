@@ -1,0 +1,78 @@
+require 'spec_helper'
+
+describe Gitlab::Ci::Config::Entry::Reports do
+  let(:entry) { described_class.new(config) }
+
+  describe 'validates ALLOWED_KEYS' do
+    let(:artifact_file_types) { Ci::JobArtifact.file_types }
+
+    described_class::ALLOWED_KEYS.each do |keyword, _|
+      it "expects #{keyword} to be an artifact file_type" 
+
+    end
+  end
+
+  describe 'validation' do
+    context 'when entry config value is correct' do
+      using RSpec::Parameterized::TableSyntax
+
+      shared_examples 'a valid entry' do |keyword, file|
+        describe '#value' do
+          it 'returns artifacs configuration' 
+
+        end
+
+        describe '#valid?' do
+          it 'is valid' 
+
+        end
+      end
+
+      where(:keyword, :file) do
+        :junit | 'junit.xml'
+        :codequality | 'codequality.json'
+        :sast | 'gl-sast-report.json'
+        :dependency_scanning | 'gl-dependency-scanning-report.json'
+        :container_scanning | 'gl-container-scanning-report.json'
+        :dast | 'gl-dast-report.json'
+        :license_management | 'gl-license-management-report.json'
+        :performance | 'performance.json'
+      end
+
+      with_them do
+        context 'when value is an array' do
+          let(:config) { { "#{keyword}": [file] } }
+
+          it_behaves_like 'a valid entry', params[:keyword], params[:file]
+        end
+
+        context 'when value is not array' do
+          let(:config) { { "#{keyword}": file } }
+
+          it_behaves_like 'a valid entry', params[:keyword], params[:file]
+        end
+      end
+    end
+
+    context 'when entry value is not correct' do
+      describe '#errors' do
+        context 'when value of attribute is invalid' do
+          where(key: described_class::ALLOWED_KEYS) do
+            let(:config) { { "#{key}": 10 } }
+
+            it 'reports error' 
+
+          end
+        end
+
+        context 'when there is an unknown key present' do
+          let(:config) { { codeclimate: 'codeclimate.json' } }
+
+          it 'reports error' 
+
+        end
+      end
+    end
+  end
+end
+

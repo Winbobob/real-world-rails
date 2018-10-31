@@ -1,0 +1,112 @@
+# encoding: utf-8
+
+#  Copyright (c) 2012-2013, Jungwacht Blauring Schweiz. This file is part of
+#  hitobito and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito.
+
+require 'spec_helper'
+
+describe Subscriber::EventController do
+
+  before { sign_in(person) }
+
+  let(:now) { Time.zone.now }
+  let(:group) { groups(:top_group) }
+  let(:person) { people(:top_leader) }
+  let(:list) { Fabricate(:mailing_list, group: group) }
+
+  context 'GET query' do
+    subject { response.body }
+
+    context 'returns event and group name' do
+      before do
+        create_event('event', now)
+
+        get :query, q: 'event', group_id: group.id, mailing_list_id: list.id
+      end
+
+      it { is_expected.to match(/event \(TopGroup\)/) }
+    end
+
+    context 'lists events from previous year onwards' do
+      before do
+        create_event('event now', now)
+        create_event('event later', now + 5.minutes)
+        create_event('event last_year', now - 1.year)
+        create_event('event two_years_ago', now - 5.years)
+
+        get :query, q: 'event', group_id: group.id, mailing_list_id: list.id
+      end
+
+      it { is_expected.to match(/now/) }
+      it { is_expected.to match(/later/) }
+      it { is_expected.to match(/last_year/) }
+      it { is_expected.not_to match(/two_years_ago/) }
+    end
+
+    context 'list only events from self, sister and descendants' do
+      let(:group) { groups(:bottom_layer_one) }
+      let(:person) { Fabricate(Group::BottomLayer::Leader.name.to_s, group: group).person }
+
+      before do
+        create_event('event', now)
+        create_event('event', now, groups(:bottom_group_one_one))
+        create_event('event', now, groups(:bottom_group_two_one))
+        create_event('event', now, groups(:bottom_layer_two))
+        create_event('event', now, groups(:top_group))
+
+        get :query, q: 'event', group_id: group.id, mailing_list_id: list.id
+      end
+
+      it { is_expected.to match(%r{#{groups(:bottom_group_one_one).name}}) }
+      it { is_expected.not_to match(%r{#{groups(:bottom_group_two_one).name}}) }
+      it { is_expected.not_to match(%r{#{groups(:bottom_layer_two).name}}) }
+      it { is_expected.not_to match(%r{#{groups(:top_group).name}}) }
+    end
+
+    context 'finds by group name' do
+      before do
+        create_event('foobar', now)
+
+        get :query, q: 'Top Group', group_id: group.id, mailing_list_id: list.id
+      end
+
+      it { is_expected.to match(/foobar/) }
+    end
+
+    context 'finds by event kind' do
+      before do
+        course = Fabricate(:course, name: 'foobar', groups: [group])
+        Fabricate(:event_date, event: course, start_at: now)
+
+        get :query, q: 'Scharleiter', group_id: group.id, mailing_list_id: list.id
+      end
+
+      it { is_expected.to match(/foobar/) }
+    end
+  end
+
+  context 'POST create' do
+
+    let(:event) { create_event('event', now) }
+
+    it 'adds subscription' 
+
+
+    it 'without subscriber_id replaces error' 
+
+
+    it 'duplicated subscription replaces error' 
+
+  end
+
+
+  def create_event(name, start_at, event_group = group)
+    event = Fabricate(:event, name: name, groups: [event_group])
+    event.dates.first.update_attribute(:start_at, start_at)
+    event
+  end
+
+end
+
