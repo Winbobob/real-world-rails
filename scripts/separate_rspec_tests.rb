@@ -11,11 +11,15 @@ begin
       if line =~ /^File:.*\_spec\.rb$/
         if path.length > 0
           temp_file.close
-          FileUtils.mv(temp_file.path, path)
+          FileUtils.mv(temp_file.path, path) if path != 'we do not need feature test in this experiment'
           temp_file = Tempfile.new('foo')
         end
         arr = line.split('/');
-        path = "../separated_spec_tests/#{arr[1]}_#{arr[-1][0..-2]}"
+        path = if line.include? '/spec/features/'
+                 'we do not need feature test in this experiment'
+               else
+                 "../data/separated_spec_tests/#{arr[1]}_#{arr[-1][0..-2]}"
+               end
       else
         temp_file.puts line
       end

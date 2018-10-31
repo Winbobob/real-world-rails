@@ -1,2 +1,4 @@
 /.bundle
 /.ruby-version
+.DS_Store
+.vscode/
