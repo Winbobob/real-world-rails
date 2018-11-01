@@ -1,0 +1,93 @@
+require 'feature_helper'
+
+describe PQA::Import do
+  def loader
+    PQA::QuestionLoader.new
+  end
+
+  def from_date
+    Date.parse('1/2/2015')
+  end
+
+  def to_date
+    Date.parse('4/2/2015')
+  end
+
+  def import
+    PQA::Import.new
+  end
+
+  def questions(uin_date_strings)
+    uin_date_strings.map do |uin, (tabled_date_s, date_for_answer_s)|
+      q = PQA::QuestionBuilder.default(uin)
+      q.updated_date    = DateTime.parse(tabled_date_s)
+      q.tabled_date     = DateTime.parse(tabled_date_s)
+      q.date_for_answer = DateTime.parse(date_for_answer_s)
+      q
+    end
+  end
+
+  feature "importing PQA data into the app" do
+    before(:all) do
+      DBHelpers.load_spec_fixtures
+    end
+
+    context "when no questions exist in the db" do
+      before do
+        ds = {
+          'uin-0' => ["2/2/2015", "3/2/2015"],
+          'uin-1' => ["3/2/2015", "4/2/2015"],
+          'uin-2' => ["3/2/2015", "4/2/2015"]
+        }
+        loader.load(questions(ds))
+      end
+
+      it "reports that new records have been created" 
+
+
+      it "saves the records and flags them as 'unassigned'" 
+
+    end
+
+    context "when some questions already exist" do
+      before do
+        # first import
+        loader.load(questions({
+          'uin-0' => ["2/2/2015", "3/2/2015"],
+          'uin-1' => ["3/2/2015", "4/2/2015"]
+        }))
+
+        import.run(from_date, to_date)
+        # second import
+        loader.load(questions({
+          'uin-0' => ["1/2/2015","2/2/2015"],
+          'uin-1' => ["3/2/2015","4/2/2015"],
+          'uin-2' => ["4/2/2015","7/2/2015"]
+        }))
+      end
+
+      it "reports created and updated records" 
+
+
+      it "saves the new records, updating the existing ones, without changing the state" 
+
+    end
+
+    context 'importing a single question' do
+      
+      before(:each) do
+        # first import
+        loader.load(questions({
+          'uin-0' => ["2/2/2015", "3/2/2015"],
+          'uin-1' => ["3/2/2015", "4/2/2015"]
+        }))
+      end
+
+      context 'specifying a question that does exist' do
+        it 'should update the question and return the report' 
+
+      end
+    end
+  end
+end
+

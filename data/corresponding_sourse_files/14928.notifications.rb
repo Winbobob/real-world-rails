@@ -1,0 +1,71 @@
+class Notifications < ActionMailer::Base
+  def story_changed(story, actor)
+    @story = story
+    @actor = actor
+    state = story.state.to_sym
+
+    mail_params = MailParams.new(story, actor)
+    return unless mail_params.methods.include?(state)
+
+    mail mail_params.send(state).merge(template_name: state)
+  end
+
+  # Send notification to of a new note to the listed users
+  def new_note(note_id, notify_users)
+    @note = Note.includes(:story).find(note_id)
+    @story = @note.story
+
+    mail to: notify_users, from: @note.user.email,
+         subject: "[#{@story.project.name}] New comment on '#{@story.title}'"
+  end
+
+  def story_mention(story, users_to_notify)
+    @story = story
+
+    mail to: users_to_notify, from: @story.requested_by.email,
+         subject: "[#{@story.project.name}] New mention on '#{@story.title}'"
+  end
+
+  def archived_team(team)
+    @team = team
+
+    mail to: @team.users.pluck(:email),
+         from: ENV['MAILER_SENDER'],
+         subject: "The team <#{@team.name}> was archived"
+  end
+
+  class MailParams < Struct.new(:story, :actor)
+    def started
+      {
+        to: story.requested_by.email,
+        from: actor.email,
+        subject: "[#{story.project.name}] Your story '#{story.title}' has been started."
+      }
+    end
+
+    def delivered
+      {
+        to: story.requested_by.email,
+        from: actor.email,
+        subject: "[#{story.project.name}] Your story '#{story.title}' " \
+          'has been delivered for acceptance.'
+      }
+    end
+
+    def accepted
+      {
+        to: story.owned_by.email,
+        from: actor.email,
+        subject: "[#{story.project.name}] #{actor.name} ACCEPTED your story '#{story.title}'."
+      }
+    end
+
+    def rejected
+      {
+        to: story.owned_by.email,
+        from: actor.email,
+        subject: "[#{story.project.name}] #{actor.name} REJECTED your story '#{story.title}'."
+      }
+    end
+  end
+end

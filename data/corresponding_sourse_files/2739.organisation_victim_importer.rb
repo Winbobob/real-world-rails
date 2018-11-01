@@ -1,0 +1,2 @@
+class OrganisationVictimImporter < VictimSubclassImporter
+end

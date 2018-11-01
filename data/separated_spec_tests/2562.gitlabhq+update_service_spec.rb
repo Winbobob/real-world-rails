@@ -1,0 +1,54 @@
+require 'spec_helper'
+
+describe Members::UpdateService do
+  let(:project) { create(:project, :public) }
+  let(:group) { create(:group, :public) }
+  let(:current_user) { create(:user) }
+  let(:member_user) { create(:user) }
+  let(:permission) { :update }
+  let(:member) { source.members_and_requesters.find_by!(user_id: member_user.id) }
+  let(:params) do
+    { access_level: Gitlab::Access::MAINTAINER }
+  end
+
+  shared_examples 'a service raising Gitlab::Access::AccessDeniedError' do
+    it 'raises Gitlab::Access::AccessDeniedError' 
+
+  end
+
+  shared_examples 'a service updating a member' do
+    it 'updates the member' 
+
+  end
+
+  before do
+    project.add_developer(member_user)
+    group.add_developer(member_user)
+  end
+
+  context 'when current user cannot update the given member' do
+    it_behaves_like 'a service raising Gitlab::Access::AccessDeniedError' do
+      let(:source) { project }
+    end
+
+    it_behaves_like 'a service raising Gitlab::Access::AccessDeniedError' do
+      let(:source) { group }
+    end
+  end
+
+  context 'when current user can update the given member' do
+    before do
+      project.add_maintainer(current_user)
+      group.add_owner(current_user)
+    end
+
+    it_behaves_like 'a service updating a member' do
+      let(:source) { project }
+    end
+
+    it_behaves_like 'a service updating a member' do
+      let(:source) { group }
+    end
+  end
+end
+

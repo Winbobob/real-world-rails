@@ -1,0 +1,32 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe 'my/_sort_and_per_page.html.erb', type: :view do
+  let(:mock_response) { double(response: { 'numFound' => 7 }) }
+  let(:sort_fields) { double(empty?: true) }
+
+  before do
+    @response = mock_response
+    allow(view).to receive(:sort_fields).and_return(sort_fields)
+  end
+
+  context 'on my works page' do
+    before do
+      allow(view).to receive(:on_my_works?).and_return(true)
+      render
+    end
+    it 'has buttons' 
+
+  end
+
+  context 'not on my works page (i.e. Works shared with me)' do
+    before do
+      allow(view).to receive(:on_my_works?).and_return(false)
+      render
+    end
+    it 'has buttons' 
+
+  end
+end
+

@@ -1,0 +1,2 @@
+class ExpertWitnessImporter < WitnessSubclassImporter
+end

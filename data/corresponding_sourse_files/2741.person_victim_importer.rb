@@ -1,0 +1,2 @@
+class PersonVictimImporter < VictimSubclassImporter
+end
